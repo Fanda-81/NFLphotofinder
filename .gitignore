@@ -1,6 +1,7 @@
 node_modules/
 .next/
 out/
+outputs/
 .env*
 !.env.example
 work/
