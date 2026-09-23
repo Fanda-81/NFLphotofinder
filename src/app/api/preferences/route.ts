@@ -1,0 +1,1 @@
+import {NextResponse} from "next/server";export async function GET(){return NextResponse.json({storage:"localStorage",scope:"This browser"});}export async function PUT(req:Request){return NextResponse.json({saved:true,preferences:await req.json()});}

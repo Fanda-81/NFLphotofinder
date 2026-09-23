@@ -1,0 +1,2 @@
+import type { PhotoItem, Preferences } from "@/types/photo";
+export function recommendPhotos(items:PhotoItem[],prefs:Preferences,saved:string[]=[]){return [...items].map((p)=>({p,score:Number(prefs.positions.includes(p.position))*20+Number(prefs.teams.some(t=>p.team.includes(t)))*15+Number(prefs.styles.some(s=>p.style.includes(s)))*15+Math.max(0,10-Math.floor((Date.now()-Date.parse(p.date))/86400000))+Number(saved.includes(p.id))*4})).sort((a,b)=>b.score-a.score||Date.parse(b.p.date)-Date.parse(a.p.date)).map(x=>x.p);}

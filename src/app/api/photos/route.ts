@@ -1,0 +1,2 @@
+import {NextResponse} from "next/server";import {mockPhotos} from "@/lib/sources";import {searchPhotos} from "@/lib/search";
+export async function GET(req:Request){const u=new URL(req.url),filters={query:u.searchParams.get("q")||"",position:u.searchParams.get("position")||"",team:u.searchParams.get("team")||"",photoType:u.searchParams.get("type")||"",style:u.searchParams.get("style")||"",source:u.searchParams.get("source")||""};return NextResponse.json({items:searchPhotos(mockPhotos,filters),total:mockPhotos.length});}
